@@ -17,3 +17,20 @@ code {
 body {
   background-color: #444444;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+.mainContainer {
+  padding: 30px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
