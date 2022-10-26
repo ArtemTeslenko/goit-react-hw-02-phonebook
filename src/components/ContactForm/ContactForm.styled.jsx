@@ -10,11 +10,11 @@ export const Form = styled.form`
   border-radius: 4px;
 `;
 
-export const NameLabel = styled.label`
+export const FormLabel = styled.label`
   margin-bottom: 10px;
 `;
 
-export const NameInput = styled.input`
+export const FormInput = styled.input`
   width: 300px;
   margin-bottom: 10px;
 `;
