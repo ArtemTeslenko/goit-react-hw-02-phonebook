@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+// import Notiflix from 'notiflix';
 import React, { Component } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
@@ -17,6 +18,16 @@ class App extends Component {
   };
 
   handleFormData = data => {
+    for (const { name } of this.state.contacts) {
+      if (name === data.name) {
+        alert(`${name} is already in contacts.`);
+        // Notiflix.Confirm.show(
+        //   `${item.name} is already in contacts.`,
+        //   'Please click "yes" to confirm'
+        // );
+        return;
+      }
+    }
     data.id = nanoid();
     this.setState(prevState => ({
       contacts: [...prevState.contacts, { ...data }],
@@ -27,6 +38,12 @@ class App extends Component {
     this.setState({
       filter: e.currentTarget.value,
     });
+  };
+
+  deleteItem = itemId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== itemId),
+    }));
   };
 
   render() {
@@ -45,7 +62,10 @@ class App extends Component {
           value={this.state.filter}
           changeFilter={this.chsngeFilter}
         ></Filter>
-        <ContactList contacts={filteredItem}></ContactList>
+        <ContactList
+          contacts={filteredItem}
+          onDelete={this.deleteItem}
+        ></ContactList>
       </div>
     );
   }
