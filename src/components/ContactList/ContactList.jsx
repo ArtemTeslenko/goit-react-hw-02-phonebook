@@ -28,11 +28,12 @@ export default function ContactList({ contacts, onDelete }) {
 }
 
 ContactList.propTypes = {
-  props: PropTypes.arrayOf(
+  contacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
     })
   ),
+  onDelete: PropTypes.func,
 };
